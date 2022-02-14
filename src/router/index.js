@@ -5,6 +5,11 @@ import Order from '../pages/Order/Order'
 import Profile from '../pages/Profile/Profile'
 import Search from '../pages/Search/Search'
 import Login from '../pages/Login/Login'
+import Shops from '../pages/Shop/Shop'
+import ShopGoods from '../pages/Shop/ShopGoods/ShopGoods'
+import ShopRating from '../pages/Shop/ShopRating/ShopRating'
+import ShopInfo from '../pages/Shop/ShopInfo/ShopInfo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -44,6 +49,28 @@ export default new Router({
     {
       path: '/',
       redirect:'/home'
-    }
+    },
+    {
+      path: '/shop',
+      component: Shops,
+      children:[
+        {
+          path: '/shop/goods',
+          component: ShopGoods
+        },
+        {
+          path: '/shop/rating',
+          component: ShopRating
+        },
+        {
+          path: '/shop/info',
+          component: ShopInfo
+        },
+        {
+          path: '/shop',
+          redirect:'/shop/goods'
+        },
+      ]
+    },
   ]
 })
